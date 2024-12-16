@@ -99,6 +99,15 @@ class EmberPlayer extends SpriteAnimationComponent
       game.objectSpeed = -moveSpeed;
     }
     position += velocity * dt;
+    // If ember fell in pit, then game over.
+    if (position.y > game.size.y + size.y) {
+      game.health = 0;
+    }
+
+    if (game.health <= 0) {
+      removeFromParent();
+    }
+
     super.update(dt);
   }
 

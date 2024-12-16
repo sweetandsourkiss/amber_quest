@@ -55,6 +55,10 @@ class GroundBlock extends SpriteComponent
       }
     }
 
+    if (game.health <= 0) {
+      removeFromParent();
+    }
+
     super.update(dt);
   }
 }
