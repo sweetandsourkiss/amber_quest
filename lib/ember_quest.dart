@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:flame/events.dart';
 import 'package:flutter/foundation.dart';
 
 import '../managers/segment_manager.dart';
@@ -12,7 +13,8 @@ import 'package:amber_quest/objects/star.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
-class EmberQuestGame extends FlameGame {
+class EmberQuestGame extends FlameGame
+    with HasCollisionDetection, HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
@@ -79,7 +81,7 @@ class EmberQuestGame extends FlameGame {
     }
 
     _ember = EmberPlayer(
-      position: Vector2(128, canvasSize.y - 70),
+      position: Vector2(128, canvasSize.y - 128),
     );
     world.add(_ember);
   }
