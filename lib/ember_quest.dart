@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:amber_quest/overlays/hud.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/foundation.dart';
 
@@ -19,6 +20,8 @@ class EmberQuestGame extends FlameGame
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
   double objectSpeed = 0.0;
+  int starsCollected = 0;
+  int health = 3;
 
   @override
   FutureOr<void> onLoad() async {
@@ -84,6 +87,7 @@ class EmberQuestGame extends FlameGame
       position: Vector2(128, canvasSize.y - 128),
     );
     world.add(_ember);
+    camera.viewport.add(Hud());
   }
 
   @override
