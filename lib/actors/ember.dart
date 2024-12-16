@@ -124,15 +124,18 @@ class EmberPlayer extends SpriteAnimationComponent
     }
     if (other is Star) {
       other.removeFromParent();
+      game.starsCollected++;
     }
     if (other is WaterEnemy) {
       hit();
     }
+
     super.onCollision(intersectionPoints, other);
   }
 
   void hit() {
     if (!hitByEnemy) {
+      game.health--;
       hitByEnemy = true;
     }
     add(
@@ -140,7 +143,7 @@ class EmberPlayer extends SpriteAnimationComponent
         EffectController(
           alternate: true,
           duration: 0.1,
-          repeatCount: 6,
+          repeatCount: 5,
         ),
       )..onComplete = () {
           hitByEnemy = false;
